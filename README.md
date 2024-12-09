@@ -3,7 +3,7 @@
 
 ## Setup Instructions
 
-### 1. 1. Generate the Dataset
+### 1. Generate the Dataset
 The dataset simulates monthly supply levels for critical EMS items like Bandages, Oxygen Tanks, IV Kits, and more. You do not need to download any files manually as the dataset will be automatically generated when you run the script.
 
 ---
