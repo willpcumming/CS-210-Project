@@ -1,4 +1,3 @@
-
 # EMS Inventory Management System
 
 ## Setup Instructions
