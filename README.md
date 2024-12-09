@@ -58,11 +58,11 @@ This script will:
 ---
 
 ### Repository Structure
-**'generate_dataset.py'**: Script for generating the simulated EMS inventory dataset.
-**'main.py'**: Main script to orchestrate the data processing and analysis workflow.
-**'ambulance_items_usage.csv'**: The generated dataset (created when the script is run).
-**'ems_inventory.db'**: SQLite database containing raw and processed data.
-**'requirements.txt'**: List of required libraries and dependencies.
-**'README.md'**: Instructions and documentation for setting up and running the project.
+**`generate_dataset.py`**: Script for generating the simulated EMS inventory dataset.
+**`main.py`**: Main script to orchestrate the data processing and analysis workflow.
+**`ambulance_items_usage.csv`**: The generated dataset (created when the script is run).
+**`ems_inventory.db`**: SQLite database containing raw and processed data.
+**`requirements.txt`**: List of required libraries and dependencies.
+**`README.md`**: Instructions and documentation for setting up and running the project.
 
 ---
