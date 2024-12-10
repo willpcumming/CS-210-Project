@@ -216,27 +216,38 @@ def analyze_restock_and_critical_stock(data, max_inventory):
 
     for item, max_val in max_inventory.items():
         if item not in data.columns:
+            print(f"Skipping {item}, not found in data.")
             continue
 
         print(f"\nAnalyzing {item}...")
-        # Restocks above 20% of max
-        restocks = (data[item].diff() > 0) & (data[item].shift(1) > 0.2 * max_val)
-        restock_dates = data['Month'][restocks]
-        print(f"Restocks occurred above 20% of max ({0.2 * max_val}):")
-        for date in restock_dates:
-            print(f" - {date.strftime('%Y-%m')}")
 
-        # Check for months below max usage
+        # Detect restocks: inventory increases where the previous value is below 20% of the max
+        restocks = (data[item].diff() > 0) & (data[item].shift(1) < 0.2 * max_val)
+        restock_dates = data['Month'][restocks]
+        if not restock_dates.empty:
+            print(f"Restocks occurred when inventory was below 20% of max ({0.2 * max_val}):")
+            for date in restock_dates:
+                print(f" - {date.strftime('%Y-%m')}")
+        else:
+            print("No restocks detected below critical levels.")
+
+        # Detect critical stock levels: inventory drops below the maximum usage in any month
         usage_col = f"{item}_Usage"
         if usage_col in data.columns:
             max_usage = data[usage_col].max()
             critical_stock = data[item] < max_usage
             critical_dates = data['Month'][critical_stock]
-            print(f"Months when stock fell below max usage ({max_usage}):")
-            for date in critical_dates:
-                print(f" - {date.strftime('%Y-%m')}")
+            if not critical_dates.empty:
+                print(f"Months when {item} stock fell below max usage ({max_usage}):")
+                for date in critical_dates:
+                    print(f" - {date.strftime('%Y-%m')}")
+            else:
+                print("No critical stock issues detected.")
+        else:
+            print(f"No usage data available for {item}.")
 
     print("\nAnalysis completed.")
+
 
 
 
