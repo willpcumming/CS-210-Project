@@ -251,6 +251,7 @@ def analyze_restock_and_critical_stock(data, max_inventory):
 
 
 
+
 if __name__ == "__main__":
     # Step 0: Generate the dataset
     print("Generating dataset...")
