@@ -65,3 +65,7 @@ This script will:
 - **`README.md`**: Instructions and documentation for setting up and running the project.
 
 ---
+
+### [Video Demo](https://youtu.be/lp-1MZSP1J8)
+
+---
